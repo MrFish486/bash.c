@@ -1,7 +1,5 @@
 //Compile with "gcc -o ls ls.c -lm"
 #include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
 #include <dirent.h>
 #include <math.h>
 int main(int argc, char **argv){
@@ -80,5 +78,5 @@ int main(int argc, char **argv){
                         }
                 }
 	}
-	return 0
+	return 0;
 }
