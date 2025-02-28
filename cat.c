@@ -13,10 +13,11 @@ int main(int argc, char **argv){
 			fclose(h);
 		}
 	}else{
-		while(0==0){ // Didn't want <stdbool.h>
+		while(1){ // Didn't want <stdbool.h>
 			char in[1];
 			scanf("%c",&in);
 			printf(in);
 		}
 	}
+	return 0;
 }
