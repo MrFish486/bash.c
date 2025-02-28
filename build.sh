@@ -6,3 +6,4 @@ gcc -o 'bin/cat' 'cat.c'
 gcc -o 'bin/mv' 'mv.c'
 gcc -o 'bin/cp' 'cp.c'
 gcc -o 'bin/date' 'date.c'
+chmod u+x bin/*
