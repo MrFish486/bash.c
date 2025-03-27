@@ -42,7 +42,11 @@ int main(int argc, char **argv){
 	system("clear");
 	if(ws < lines){
 		// Split buf into lines
-		char linestore[lines][256];
+		//char linestore[lines][256];
+		char ** linestore = calloc(sizeof(char) * 256, lines);
+		for(int i = 0; i < lines; i++){
+			linestore[i] = calloc(sizeof(char) * 256, 1);
+		}
 		long long int a = 0; // Line
 		long long int b = 0; // Readhead
 		long long int c = 0; // Writehead
@@ -58,13 +62,18 @@ int main(int argc, char **argv){
 			b++;
 			c++;
 		}
-		char selection[ws][256];
-		while(1){
-			
+		char selection[ws - 1][256];
+		for(long long int progress = 0; progress < lines; progress++){
+			for(int i = 0; i < (ws - 2); i++){
+				printf("%s", linestore[i + progress]);
+			}
+			printf("\nLine : \e[1;35m%lli\e[0;38m (\e[1;31m[q]\e[0;38m : quit, \e[1;32m[enter]\e[0;38m : continue) ", progress);
+			if(getchar() == 'q'){
+				return 2;
+			}
+			system("clear");
 		}
-		for(int i = 0; i < lines; i++){
-			printf("%s\n", linestore[i]);
-		}
+		free(linestore);
 	}else{
 		printf("%s", buf);
 	}
