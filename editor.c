@@ -34,28 +34,39 @@ int main(int argc, char **argv){
 	system("clear");
 	if(ws < lines){
 		printf("\e[1;33mFile doesn't fit on screen.\e[0;38m\n");
-	}else if(ws > lines || ws == lines){
+	}else{
 		printf("\e[1;32mFile fits on screen.\e[0;38m\n");
 	}
-	printf("Size  : %dB\nLines : %d\nEnter to continue.", size, lines);
+	printf("Size  : %lliB\nLines : %lli\nEnter to continue.", size, lines);
 	getchar();
+	system("clear");
 	if(ws < lines){
 		// Split buf into lines
 		char linestore[lines][256];
-		long long int a = 0;
-		long long int b = 0;
+		long long int a = 0; // Line
+		long long int b = 0; // Readhead
+		long long int c = 0; // Writehead
 		while(1){
 			if(buf[b] == '\n'){
 				a++;
+				c = 0;
 			}
 			if(a == lines){
 				break;
 			}
-			linestore[a][b] = buf[b];
+			linestore[a][c] = buf[b];
+			b++;
+			c++;
 		}
-		for(int i = 0; i < lines; i++){
+		char selection[ws][256];
+		while(1){
 			
 		}
+		for(int i = 0; i < lines; i++){
+			printf("%s\n", linestore[i]);
+		}
+	}else{
+		printf("%s", buf);
 	}
 	// Exit
 	free(buf);
