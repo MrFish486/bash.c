@@ -63,13 +63,17 @@ int main(int argc, char **argv){
 			c++;
 		}
 		char selection[ws - 1][256];
-		for(long long int progress = 0; progress < lines; progress++){
+		char d;
+		for(long long int progress = 0; progress < (lines - ws) + 4; progress++){
 			for(int i = 0; i < (ws - 2); i++){
 				printf("%s", linestore[i + progress]);
 			}
-			printf("\nLine : \e[1;35m%lli\e[0;38m (\e[1;31m[q]\e[0;38m : quit, \e[1;32m[enter]\e[0;38m : continue) ", progress);
-			if(getchar() == 'q'){
+			printf("\e[%dHLine : \e[1;35m%lli\e[0;38m / \e[7m%d\e[0;38m (\e[1;31m[q]\e[0;38m : quit, \e[1;33m[p]\e[0;38m : page down, \e[1;32m[enter]\e[0;38m : continue) ", ws, progress, (lines - ws) + 4);
+			d = getchar();
+			if(d == 'q'){
 				return 2;
+			}else if(d == 'p'){
+				progress += ws - 2;
 			}
 			system("clear");
 		}
