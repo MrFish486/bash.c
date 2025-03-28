@@ -1,0 +1,7 @@
+Mid - a pager program.
+
+"No more, no less."
+
+Exit codes:
+1 : file not found
+2 : user quit
